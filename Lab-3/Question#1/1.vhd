@@ -5,7 +5,7 @@ entity RisingEdge_DFlipFlop_AsyncResetLow is
    port(
       Q : out std_logic;    
       Clk :in std_logic;  
-   sync_reset: in std_logic;  
+      sync_reset: in std_logic;  
       D :in  std_logic    
    );
 end RisingEdge_DFlipFlop_AsyncResetLow;
