@@ -43,7 +43,7 @@ begin
 				end if;
 			when s4=>
 				if(input='1') then
-					next_state<=s1;
+					next_state<=s2;
 				else 
 					next_state<=s0;
 				end if;
