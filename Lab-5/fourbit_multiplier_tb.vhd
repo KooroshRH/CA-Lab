@@ -18,5 +18,5 @@ signal sum : std_logic_vector(7 downto 0);
 begin
 mult : fourbit_multiplier port map ( A => x, B => y, C => sum);
 x <= "0010", "0011" after 100ns;
-y <= "0110", "1011" after 100ns;
+y <= "0010", "1010" after 100ns;
 end test;
