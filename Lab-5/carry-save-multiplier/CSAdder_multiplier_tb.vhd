@@ -17,6 +17,6 @@ signal sum : std_logic_vector(7 downto 0);
 
 begin
 mult : CSAdder_multiplier port map ( A => x, B => y, C => sum);
-x <= "0010", "0011" after 100 ns;
+x <= "0011", "0011" after 100 ns;
 y <= "0010", "1010" after 100 ns;
 end test;

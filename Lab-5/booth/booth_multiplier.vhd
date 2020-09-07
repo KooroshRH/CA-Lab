@@ -3,12 +3,14 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use ieee.std_logic_unsigned.all;
  
-entity Boot is
-    port(x, y: in std_logic_vector(3 downto 0);
-         O: out std_logic_vector(7 downto 0));
-end Boot;
+entity Booth is
+    port(
+	x, y: in std_logic_vector(3 downto 0);
+         O: out std_logic_vector(7 downto 0)
+);
+end Booth;
    
-architecture boot of Boot is
+architecture behavioral of Booth is
     begin
            
         process(x, y)
@@ -41,4 +43,4 @@ architecture boot of Boot is
                    
             end process;
                
-        end boot;
+        end behavioral;

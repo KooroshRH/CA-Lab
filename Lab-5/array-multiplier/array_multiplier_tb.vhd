@@ -18,5 +18,5 @@ signal mul : std_logic_vector(7 downto 0);
 begin
 mult : array_multiplier port map ( A => x, B => y, C => mul);
 x <= "0010", "0011" after 100 ns;
-y <= "0010", "1010" after 100 ns;
+y <= "0011", "0110" after 100 ns;
 end test;
