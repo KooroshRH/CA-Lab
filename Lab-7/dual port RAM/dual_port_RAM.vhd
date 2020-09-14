@@ -40,7 +40,7 @@ begin
 
 	process(clk, reset)
 	begin
-		if(reset = '1') then 
+		if(reset = '0') then 
 			for I in 0 to (2**C-1) loop
 				ram(I) <= std_logic_vector(to_unsigned(I, word_t'length));
 			end loop;

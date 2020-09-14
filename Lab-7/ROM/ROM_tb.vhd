@@ -29,8 +29,8 @@ begin
 rom1 : ROM
 generic map (W => 4, C => 4)
 port map ( clk => clock, reset => clear, rd => red, address => addr, data => data_sig);
-clock <= '0', '1' after 25ns, '0' after 50ns, '1' after 75ns, '0' after 100ns, '1' after 125ns, '0' after 150ns, '1' after 175ns, '0' after 200ns, '1' after 225ns;
-clear <= '1', '0' after 10ns;
-red <= '1', '0' after 40ns, '1' after 80ns;
-addr <= "1100", "0010" after 50ns, "1110" after 100ns;
+clock <= '0', '1' after 25 ns, '0' after 50 ns, '1' after 75 ns, '0' after 100 ns, '1' after 125 ns, '0' after 150 ns, '1' after 175 ns, '0' after 200 ns, '1' after 225 ns;
+clear <= '0', '1' after 10 ns;
+red <= '1', '0' after 40 ns, '1' after 80 ns;
+addr <= "1100", "0010" after 50 ns, "1110" after 100 ns;
 end test;
