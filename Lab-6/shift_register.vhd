@@ -10,31 +10,31 @@ entity shift_register is
 end shift_register;
 
 architecture arch of shift_register is
- 
+ signal tmp_req : std_logic_vector(3 downto 0);
 begin
- 
  process (clk)
  begin
  if reset = '1' then
- 	reg_out <= "0000";
+ 	tmp_req <= "0000";
  elsif (CLK'event and CLK='1') then
 	if load = '1' then
 		case lr is
 			when "00" =>
-				reg_out <= parallel_in;
+				tmp_req <= parallel_in;
 			when "11" => -- arithmetic and logical left shift
-				reg_out(3 downto 1) <= parallel_in(2 downto 0);
-				reg_out(0) <= '0';
+				tmp_req(3 downto 1) <= tmp_req(2 downto 0);
+				tmp_req(0) <= '0';
 			when "10" => -- arithmetic right shift
-				reg_out(2 downto 0) <= parallel_in(3 downto 1);
-				reg_out(3) <= '1';
+				tmp_req(2 downto 0) <= tmp_req(3 downto 1);
+				tmp_req(3) <= '1';
 			when "01" => -- logical right shift
-				reg_out(2 downto 0) <= parallel_in(3 downto 1);
-				reg_out(3) <= '0';
+				tmp_req(2 downto 0) <= tmp_req(3 downto 1);
+				tmp_req(3) <= '0';
 			when others =>
 		end case;
 	end if;
  end if;
+ reg_out <= tmp_req;
  end process;
 end arch;
 

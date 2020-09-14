@@ -24,6 +24,6 @@ reg : shift_register port map ( clk => clock, reset => clear, load => insert, pa
 clock <= '0', '1' after 25ns, '0' after 50ns, '1' after 75ns, '0' after 100ns, '1' after 125ns, '0' after 150ns, '1' after 175ns, '0' after 200ns, '1' after 225ns;
 input <= "0100";
 insert <= '1', '0' after 200ns;
-clear <= '0', '1' after 100ns, '0' after 130ns;
-left_right <= "01", "10" after 50ns, "11" after 100ns, "00" after 200ns;
+clear <= '0';
+left_right <= "00", "10" after 50ns, "11" after 110ns;
 end test;
