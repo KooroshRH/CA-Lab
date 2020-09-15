@@ -19,7 +19,7 @@ use IEEE. NUMERIC_STD.ALL;
 	 
 	-- Inputs/outputs of the state register and the z, d, and i registers
 
-	signal state_reg, state_next : state_type;   
+	  signal state_reg, state_next : state_type;   
 	  signal z_reg, z_next : unsigned(16 downto 0);   
 	  signal d_reg, d_next : unsigned(7 downto 0);
 	  signal i_reg, i_next : unsigned(3 downto 0);
@@ -68,16 +68,16 @@ use IEEE. NUMERIC_STD.ALL;
 		end process;
 					
 	--control path: output logic
-	ready <= '1' when state_reg=idle else
+	ready <= '1' when state_reg = idle else
 		    '0';
-	ovfl <= '1' when ( state_reg=idle and ( m(15 downto 8) >= n ) ) else
+	ovfl <= '1' when ( state_reg = idle and ( m(15 downto 8) >= n ) ) else
 		'0';
 								
 	--control path: registers of the counter used to count the iterations
 	process(clk, reset)
 	begin
 		if (reset='1') then
-			i_reg <= ( others=>'0' );
+			i_reg <= ( others => '0' );
 		elsif (clk'event and clk='1') then
 			i_reg <= i_next;
 		end if;
@@ -108,7 +108,7 @@ use IEEE. NUMERIC_STD.ALL;
 			d_reg <= (others => '0');
 		elsif ( clk'event and clk='1' ) then
 		z_reg <= z_next;
-			d_reg <= d_next;
+		d_reg <= d_next;
 		end if;
 	end process;
 			
