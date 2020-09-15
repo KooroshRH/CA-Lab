@@ -10,14 +10,12 @@ entity dual_port_ram is
 	);
 	port
 	(
-		data_a	: inout std_logic_vector(W-1 downto 0);
-		data_b	: inout std_logic_vector(W-1 downto 0);
-		address_a	: in std_logic_vector(C-1 downto 0);
-		address_b	: in std_logic_vector(C-1 downto 0);
-		wr_a		: in std_logic;
-		wr_b		: in std_logic;
-		rd_a		: in std_logic;
-		rd_b		: in std_logic;
+		data_in	: in std_logic_vector(W-1 downto 0);
+		data_out	: out std_logic_vector(W-1 downto 0);
+		address_in	: in std_logic_vector(C-1 downto 0);
+		address_out	: in std_logic_vector(C-1 downto 0);
+		wr		: in std_logic;
+		rd		: in std_logic;
 		reset		: in std_logic;
 		clk		: in std_logic
 	);
@@ -46,15 +44,11 @@ begin
 			end loop;
 		end if;
 		if(rising_edge(clk)) then
-			if(wr_a = '1') then
-				ram(to_integer(unsigned(address_a))) <= data_a;
-			elsif(rd_a = '1') then
-				data_a <= ram(to_integer(unsigned(address_a)));
+			if(wr = '1') then
+				ram(to_integer(unsigned(address_in))) <= data_in;
 			end if;
-			if(wr_b = '1') then
-				ram(to_integer(unsigned(address_b))) <= data_b;
-			elsif(rd_b = '1') then
-				data_b <= ram(to_integer(unsigned(address_b)));
+			if(rd = '1') then
+				data_out <= ram(to_integer(unsigned(address_out)));
 			end if;
 		end if;
 	end process;

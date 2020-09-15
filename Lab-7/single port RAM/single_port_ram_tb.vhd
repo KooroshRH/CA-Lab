@@ -35,4 +35,5 @@ clear <= '1', '0' after 10ns;
 wrt <= '0', '1' after 40ns, '0' after 60ns;
 red <= '1', '0' after 40ns, '1' after 80ns;
 addr <= "1100", "0010" after 50ns;
+data_sig <= "0101" after 50ns;
 end test;

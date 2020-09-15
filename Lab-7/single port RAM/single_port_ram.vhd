@@ -43,6 +43,7 @@ begin
 		end if;
 		if(rising_edge(clk)) then
 			if(wr = '1') then
+				data <= (others => 'Z');
 				ram(to_integer(unsigned(address))) <= data;
 			elsif(rd = '1') then
 				data <= ram(to_integer(unsigned(address)));
