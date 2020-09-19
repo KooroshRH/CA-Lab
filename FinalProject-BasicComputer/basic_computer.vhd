@@ -69,7 +69,11 @@ component sequence_counter
  );
 end component;
 
+signal T, IR_data, bus_data: std_logic_vector(15 downto 0) := "0000000000000000";
+signal D: std_logic_vector(7 downto 0) := "00000000";
 
 begin 
+
+IR_register: register16bit port map (D => bus_data, load => T(1), increament => '0', Clk => clk, Q => IR_data);
    
 end behavioral;
