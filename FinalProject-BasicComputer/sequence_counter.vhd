@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity sequence_counter is
  port (
- 	clk : in STD_LOGIC;
+ 	Clk : in STD_LOGIC;
 	clear : in STD_LOGIC;
  	output : out STD_LOGIC_VECTOR(3 downto 0)
  );

@@ -11,7 +11,7 @@ end decoder3to8;
 architecture Behavioral of decoder3to8 is
 begin
 with input select
-output<="00000001" when "000",
+output <= "00000001" when "000",
 "00000010" when "001",
 "00000100" when "010",
 "00001000" when "011",

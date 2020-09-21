@@ -9,7 +9,7 @@ entity memory is
 		address	: in std_logic_vector(15 downto 0);
 		wr		: in std_logic;
 		rd		: in std_logic;
-		clk		: in std_logic
+		Clk		: in std_logic
 	);
 	
 end entity;
@@ -28,9 +28,9 @@ architecture rtl of memory is
 
 begin
 
-	process(clk)
+	process(Clk)
 	begin
-		if(rising_edge(clk)) then
+		if(rising_edge(Clk)) then
 			if(wr = '1') then
 				data <= (others => 'Z');
 				ram(to_integer(unsigned(address))) <= data;
