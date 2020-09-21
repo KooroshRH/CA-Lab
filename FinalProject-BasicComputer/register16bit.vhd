@@ -6,6 +6,7 @@ entity register16bit is
 port ( 
 	D : IN std_logic_vector(15 downto 0);
 	load : IN std_logic;
+	reset : IN std_logic;
 	increament : in std_logic;
 	Clk : IN std_logic;
 	Q : OUT std_logic_vector(15 downto 0)
@@ -14,8 +15,11 @@ end register16bit;
 architecture Behavioral of register16bit is
 	signal regQ: std_logic_vector(15 downto 0);
 begin
-	process(clk,load)
+	process(clk,load, reset)
 	begin
+		if(reset='1') then
+			Q <= (others => '0');
+		end if;
 		if(load='1' and clk='1')then
 			Q <= D;
 			regQ <= D;
