@@ -13,7 +13,7 @@ port (
 	 );
 end register16bit;
 architecture Behavioral of register16bit is
-	signal regQ: std_logic_vector(15 downto 0);
+	signal regQ: std_logic_vector(15 downto 0) := (others => '0');
 begin
 	process(clk,load, reset)
 	begin

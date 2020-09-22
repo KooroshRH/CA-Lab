@@ -17,7 +17,7 @@ ARCHITECTURE arch16 OF adder16bit IS
                cout      : OUT   STD_LOGIC);
     END COMPONENT;
 
-    SIGNAL c1, c2, c3, c4, c5, c6, c7  : std_LOGIC;
+    SIGNAL c1, c2, c3, c4, c5, c6, c7  : std_LOGIC := '0';
 
 BEGIN
 

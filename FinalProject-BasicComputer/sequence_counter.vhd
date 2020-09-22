@@ -20,7 +20,7 @@ component T_FF
  );
 end component;
 
-signal all_T, q0, q1, q2, q3 : STD_LOGIC;
+signal all_T, q0, q1, q2, q3 : STD_LOGIC := '0';
 begin
 
 all_T <= '1';

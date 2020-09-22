@@ -5,7 +5,9 @@ use IEEE.numeric_std.all;
 entity memory is
 	port
 	(
-		data	: inout std_logic_vector(15 downto 0);
+		input	: in std_logic_vector(15 downto 0);
+		output  : out std_logic_vector(15 downto 0);
+		res     : out std_logic_vector(15 downto 0);
 		address	: in std_logic_vector(15 downto 0);
 		wr		: in std_logic;
 		rd		: in std_logic;
@@ -24,18 +26,22 @@ architecture rtl of memory is
 	signal ram : memory_t;
 	
 	-- Register to hold the address
-	signal addr_reg : std_logic_vector(15 downto 0);
+	signal addr_reg : std_logic_vector(15 downto 0) := (others => '0');
 
 begin
-
+	ram(0) <= "0010000000001010"; -- set LDA in 0 place of memory and address is 10
+	ram(1) <= "0001000000001011"; -- set ADD in 1 place of memory and address is 11
+	ram(2) <= "0011000000001100"; -- set STA in 2 place of memory and address is 12
+	ram(10) <= "0000000000001111"; -- first number for adding in 10 place is 15
+	ram(11) <= "0000000000001001"; -- second number for adding in 11 place is 9
+	res <= ram(12); -- result must be saved in 12 place of memory and the result is 24
 	process(Clk)
 	begin
 		if(rising_edge(Clk)) then
 			if(wr = '1') then
-				data <= (others => 'Z');
-				ram(to_integer(unsigned(address))) <= data;
+				ram(to_integer(unsigned(address))) <= input;
 			elsif(rd = '1') then
-				data <= ram(to_integer(unsigned(address)));
+				output <= ram(to_integer(unsigned(address)));
 			end if;
 		end if;
 	end process;

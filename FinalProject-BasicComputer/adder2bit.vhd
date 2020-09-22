@@ -18,7 +18,7 @@ ARCHITECTURE STRUCTURE OF adder2bit IS
         );
     END COMPONENT;
 
-    SIGNAL c1 : STD_LOGIC;
+    SIGNAL c1 : STD_LOGIC := '0';
 
 BEGIN
 
