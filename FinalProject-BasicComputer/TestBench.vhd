@@ -10,8 +10,8 @@ component basic_computer
 	res: out std_logic_vector(15 downto 0)
    ); 
 end component; 
-signal clock : std_logic := '0';
-signal  result : std_Logic_vector(15 downto 0) := (others => '0');
+signal clock : std_logic ;
+signal  result : std_Logic_vector(15 downto 0);
 begin
 bc : basic_computer port map (clk => clock, res => result);
 clock <=  '1' after 0.5 ns when clock = '0' else
