@@ -30,6 +30,11 @@ component memory
 	port
 	(
 		input	: in std_logic_vector(15 downto 0) := (others => '0');
+		ram0 : in std_logic_vector(15 downto 0);
+		ram1 : in std_logic_vector(15 downto 0);
+		ram2 : in std_logic_vector(15 downto 0);
+		ram10 : in std_logic_vector(15 downto 0);
+		ram11 : in std_logic_vector(15 downto 0);
 		output  : out std_logic_vector(15 downto 0) := (others => '0');
 		res     : out std_logic_vector(15 downto 0) := (others => '0');
 		address	: in std_logic_vector(15 downto 0) := (others => '0');
@@ -99,7 +104,7 @@ out_and_De2_T4 <= De(2) and T(4);
 out_and_De1_T4 <= De(2) and T(4);
 mem_write <= De(3) and T(4);
 mem_read <= T(1) or out_and_De2_T4 or out_and_De1_T4 or out_and_I_T3;
-mem : Memory port map (input => bus_data, output => mem_out, res => res, address => AR_data, wr => mem_write, rd => mem_read, Clk => clk);
+mem : Memory port map (input => bus_data, ram0 => "0010000000001010" , ram1 => "0001000000001011", ram2 => "0011000000001100", ram10 => "0000000000001111", ram11 => "0000000000001001",  output => mem_out, res => res, address => AR_data, wr => mem_write, rd => mem_read, Clk => clk);
 
 out_or_S(2) <= T(1) or T(2) or out_and_De3_T4 or out_and_De2_T4 or out_and_De1_T4 or out_and_I_T3;
 out_or_S(1) <= T(0) or T(1) or out_and_De2_T4 or out_and_De1_T4 or out_and_I_T3;

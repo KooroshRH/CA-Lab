@@ -6,6 +6,11 @@ entity memory is
 	port
 	(
 		input	: in std_logic_vector(15 downto 0);
+		ram0 : in std_logic_vector(15 downto 0);
+		ram1 : in std_logic_vector(15 downto 0);
+		ram2 : in std_logic_vector(15 downto 0);
+		ram10 : in std_logic_vector(15 downto 0);
+		ram11 : in std_logic_vector(15 downto 0);
 		output  : out std_logic_vector(15 downto 0);
 		res     : out std_logic_vector(15 downto 0);
 		address	: in std_logic_vector(15 downto 0);
@@ -29,11 +34,11 @@ architecture rtl of memory is
 	signal addr_reg : std_logic_vector(15 downto 0) := (others => '0');
 
 begin
-	ram(0) <= "0010000000001010"; -- set LDA in 0 place of memory and address is 10
-	ram(1) <= "0001000000001011"; -- set ADD in 1 place of memory and address is 11
-	ram(2) <= "0011000000001100"; -- set STA in 2 place of memory and address is 12
-	ram(10) <= "0000000000001111"; -- first number for adding in 10 place is 15
-	ram(11) <= "0000000000001001"; -- second number for adding in 11 place is 9
+	--ram(0) <= "0010000000001010"; -- set LDA in 0 place of memory and address is 10
+	--ram(1) <= "0001000000001011"; -- set ADD in 1 place of memory and address is 11
+	--ram(2) <= "0011000000001100"; -- set STA in 2 place of memory and address is 12
+	--ram(10) <= "0000000000001111"; -- first number for adding in 10 place is 15
+	--ram(11) <= "0000000000001001"; -- second number for adding in 11 place is 9
 	res <= ram(12); -- result must be saved in 12 place of memory and the result is 24
 	process(Clk)
 	begin
