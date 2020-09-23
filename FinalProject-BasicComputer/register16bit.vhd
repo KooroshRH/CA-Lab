@@ -9,7 +9,7 @@ port (
 	reset : IN std_logic;
 	increament : in std_logic;
 	Clk : IN std_logic;
-	Q : OUT std_logic_vector(15 downto 0)
+	Q : OUT std_logic_vector(15 downto 0):= (others => '0')
 	 );
 end register16bit;
 architecture Behavioral of register16bit is
