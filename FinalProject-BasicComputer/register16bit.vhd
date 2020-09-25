@@ -8,23 +8,26 @@ port (
 	load : IN std_logic;
 	reset : IN std_logic;
 	increament : in std_logic;
-	Clk : IN std_logic;
+	clk : IN std_logic;
 	Q : OUT std_logic_vector(15 downto 0):= (others => '0')
 	 );
 end register16bit;
 architecture Behavioral of register16bit is
 	signal regQ: std_logic_vector(15 downto 0) := (others => '0');
 begin
-	process(clk,load, reset)
+	process(clk, increament, load, reset)
 	begin
 		if(reset='1') then
 			Q <= (others => '0');
 		end if;
-		if(load='1' and clk='1')then
+		if(load='1')then
 			Q <= D;
 			regQ <= D;
-		elsif(increament='1' and clk='1') then
-			Q <= std_logic_vector(to_unsigned(to_integer(unsigned(regQ)) + 1, regQ'length));
+		end if;
+		if(rising_edge(increament)) then
+			Q <= std_logic_vector( unsigned(regQ) + 1 );
+			regQ <= std_logic_vector( unsigned(regQ) + 1 );
+			--Q <= std_logic_vector(to_unsigned(to_integer(unsigned(regQ)) + 1, regQ'length));
 		end if;
 	end process;
 end Behavioral;
